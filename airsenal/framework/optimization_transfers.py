@@ -296,7 +296,6 @@ def make_random_transfers(
 
     if best_squad is None:
         raise RuntimeError("Failed to find valid random transfers for squad")
-
     return best_squad, best_pid_out, best_pid_in
 
 
@@ -363,7 +362,18 @@ def make_best_transfers(
             update_func_and_args=update_func_and_args,
         )
         transfer_dict = {"in": players_in, "out": players_out}
-
+    elif num_transfers == 3 or num_transfers == 4:
+        new_squad, players_out, players_in = make_random_transfers(
+            squad,
+            tag,
+            nsubs=num_transfers,
+            gw_range=gameweeks,
+            root_gw=root_gw,
+            num_iter=num_iter,
+            update_func_and_args=update_func_and_args,
+            season=season
+        )
+        transfer_dict = {"in": players_in, "out": players_out}
     elif num_transfers in ["W", "F"]:
         _out = [p.player_id for p in squad.players]
         budget = get_squad_value(squad)

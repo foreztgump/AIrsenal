@@ -443,7 +443,6 @@ def next_week_transfers(
             for nt in ft_choices
             if hit_so_far + calc_points_hit(nt, ft_available) <= max_total_hit
         ]
-
     allow_wildcard = (
         "chips_allowed" in chips.keys()
         and "wildcard" in chips["chips_allowed"]
@@ -471,6 +470,8 @@ def next_week_transfers(
         new_transfers = ["W"]
     elif "chip_to_play" in chips.keys() and chips["chip_to_play"] == "free_hit":
         new_transfers = ["F"]
+    elif "chip_to_play" in chips.keys() and chips["chip_to_play"] == "extra_transfers":
+        new_transfers = [3,4]
     # for triple captain or bench boost, we can still do ft_choices transfers
     elif "chip_to_play" in chips.keys() and chips["chip_to_play"] == "triple_captain":
         new_transfers = [f"T{nt}" for nt in ft_choices]
@@ -539,7 +540,6 @@ def count_expected_outputs(
                 allow_unused_transfers=allow_unused_transfers,
                 chips=chips_for_gw,
             )
-
             for n_transfers, new_free_transfers, new_hit in possibilities:
                 # make a copy of the strategy up to this point, then add on this gw
                 new_dict = deepcopy(s[2])
@@ -564,11 +564,9 @@ def count_expected_outputs(
                         n_transfers = int(n_transfers[1])
                     # add dummy values to transfer dict for n_transfers transfers
                     new_dict["players_in"][gw] = [1] * n_transfers
-
                 new_strategies.append((new_free_transfers, new_hit, new_dict))
 
         strategies = new_strategies
-
     # if allow_unused_transfers is False baseline of no transfers will be removed above,
     # add it back in here, apart from edge cases where it's already included.
     if not allow_unused_transfers and (

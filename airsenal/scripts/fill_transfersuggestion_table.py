@@ -708,6 +708,12 @@ def main():
         default=-1,
     )
     parser.add_argument(
+        "--extra_transfer_week",
+        help="allow extra transfers in the specified week.",
+        type=int,
+        default=-1,
+    )
+    parser.add_argument(
         "--num_free_transfers", help="how many free transfers do we have", type=int
     )
     parser.add_argument(
@@ -776,6 +782,7 @@ def main():
         "free_hit": args.free_hit_week,
         "triple_captain": args.triple_captain_week,
         "bench_boost": args.bench_boost_week,
+        "extra_transfers": args.extra_transfer_week,
     }
 
     if not check_tag_valid(tag, gameweeks, season=season):
