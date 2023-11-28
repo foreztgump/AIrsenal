@@ -50,7 +50,7 @@ from airsenal.framework.utils import (
     was_historic_absence,
 )
 
-np.random.seed(42)
+np.random.seed(89)
 # consider probabilities of scoring/conceding up to this many goals
 MAX_GOALS = 10
 

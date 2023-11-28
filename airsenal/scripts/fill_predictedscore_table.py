@@ -315,3 +315,17 @@ def main():
             n_players=5,
             dbsession=session,
         )
+
+        out = get_predicted_points(
+            gameweek=gw_range,
+            tag=tag,
+            dbsession=session,
+        )
+
+        with open(args.ep_filename, "w") as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["Name", "Projection"])
+            for row in out:
+                writer.writerow(row)
+
+        print(f"Finished writing predictions to {args.ep_filename}")

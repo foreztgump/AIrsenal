@@ -17,7 +17,7 @@ from airsenal.framework.utils import (
     is_future_gameweek,
 )
 
-np.random.seed(42)
+np.random.seed(89)
 
 
 def get_result_dict(

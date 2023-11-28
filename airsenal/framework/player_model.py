@@ -157,9 +157,9 @@ class NumpyroPlayerModel(BasePlayerModel):
     def fit(
         self,
         data,
-        random_state: int = 42,
-        num_warmup: int = 500,
-        num_samples: int = 2000,
+        random_state: int = 89,
+        num_warmup: int = 5000,
+        num_samples: int = 20000,
         mcmc_kwargs: Optional[Dict[str, Any]] = None,
         run_kwargs: Optional[Dict[str, Any]] = None,
     ):
