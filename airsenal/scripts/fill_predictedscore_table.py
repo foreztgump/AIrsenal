@@ -7,6 +7,7 @@ python fill_predictedscore_table.py --weeks_ahead <nweeks>
 Generates a "tag" string which is stored so it can later be used by team-optimizers to
 get consistent sets of predictions from the database.
 """
+import csv
 import argparse
 from multiprocessing import Process, Queue
 from typing import List, Optional, Union
@@ -38,6 +39,7 @@ from airsenal.framework.utils import (
     get_gameweeks_array,
     get_top_predicted_points,
     list_players,
+    get_predicted_points,
 )
 
 
