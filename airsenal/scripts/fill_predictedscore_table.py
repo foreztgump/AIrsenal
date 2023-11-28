@@ -302,7 +302,11 @@ def main():
             include_saves=include_saves,
             player_model=player_model,
             team_model=team_model,
-            team_model_args={"epsilon": args.epsilon},
+            team_model_args={
+                "epsilon": args.epsilon,
+                "num_warmup": 5000,
+                "num_samples": 20000,
+            },
             dbsession=session,
         )
 
