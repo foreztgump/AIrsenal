@@ -330,7 +330,7 @@ def main():
 
         with open(args.ep_filename, "w") as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(["Name", "Projection"])
+            writer.writerow(["Name", "Projection", "Team"])
             for row in out:
                 writer.writerow(row)
 

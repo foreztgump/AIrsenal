@@ -1057,6 +1057,7 @@ def get_predicted_points(
                 get_predicted_points_for_player(
                     p, tag=tag, season=season, dbsession=dbsession
                 )[gameweek],
+                p.team(season, gameweek),  # Include the player's team name
             )
             for p in players
         ]
@@ -1073,6 +1074,7 @@ def get_predicted_points(
                     )[gw]
                     for gw in gameweek
                 ),
+                p.team(season, gameweek[0]),  # Include the player's team name
             )
             for p in players
         ]
